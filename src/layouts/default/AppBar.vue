@@ -1,12 +1,21 @@
 
-
-
+<script >
+import Vue from 'vue'
+export default({
+  data:()=>({  
+    companyNmae: "WANLAINJO COMPUTERS",
+    drawerItem: [
+        
+    ],
+  })
+})
+</script>
 
 <template>
   <v-app-bar >
     <v-app-bar-title>
       <v-icon icon="mdi-circle-slice-6" />
-      Wanlainjo Computers LTD
+       {{ companyNmae }}
     </v-app-bar-title>
   </v-app-bar>
    
@@ -76,7 +85,7 @@
           size="large"
           start
         />
-        Reports
+        <router-link to="/reports/salesreport">Reports</router-link>
       </v-btn>
       </v-list-item>
       <v-divider/> 
@@ -84,6 +93,3 @@
   </v-navigation-drawer>
 </template>
 
-<script setup>
-  //
-</script>
