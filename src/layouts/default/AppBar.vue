@@ -1,11 +1,87 @@
+
+
+
+
 <template>
-  <v-app-bar flat>
+  <v-app-bar >
     <v-app-bar-title>
       <v-icon icon="mdi-circle-slice-6" />
-
-      Essentials Preset
+      Wanlainjo Computers LTD
     </v-app-bar-title>
   </v-app-bar>
+   
+  <v-navigation-drawer
+  permanent
+  location="left"
+  >
+   <v-list>
+      <v-list-item> 
+        <v-btn
+        prepend-icon="mdi-shopping"
+        color="primary"
+        href="#"
+        min-width="200"
+        size="large"
+        variant="flat"
+        elevated
+      >
+        SALES
+      </v-btn>
+      </v-list-item>
+      <v-divider/> 
+      <v-list-item> 
+        <v-btn
+        color="success"
+        href="#"
+        min-width="200"
+        size="large"
+        variant="flat"
+      >
+        <v-icon
+          icon="mdi-StoreOutline"
+          size="large"
+          start
+        />
+        INVENTORY
+      </v-btn>
+      </v-list-item>
+      <v-divider/> 
+      <v-list-item> 
+        <v-btn
+        color="yellow"
+        href="#"
+        min-width="200"
+        size="large"
+        variant="flat"
+      >
+        <v-icon
+          icon="mdi-store"
+          size="large"
+          start
+        />
+        Inventory
+      </v-btn>
+      </v-list-item>
+      <v-divider/> 
+      <v-list-item> 
+        <v-btn
+        color="info"
+        href="#"
+        min-width="200"
+        size="large"
+        variant="flat"
+      >
+        <v-icon
+          icon="mdi-Chart-line"
+          size="large"
+          start
+        />
+        Reports
+      </v-btn>
+      </v-list-item>
+      <v-divider/> 
+   </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script setup>

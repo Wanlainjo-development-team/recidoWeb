@@ -39,7 +39,7 @@
             variant="flat"
           >
             <v-icon
-              icon="mdi-speedometer"
+              icon="mdi-shopping"
               size="large"
               start
             />
