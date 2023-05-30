@@ -1,4 +1,9 @@
 // Composables
+import CustomerListVue from '@/components/ProductsManagement/Customers/CustomerList.vue'
+import NewCustomerVue from '@/components/ProductsManagement/Customers/NewCustomer.vue'
+import NewProductsVue from '@/components/ProductsManagement/Inventory/NewProducts.vue'
+import ProductListVue from '@/components/ProductsManagement/Inventory/ProductList.vue'
+import StockAdjustmentVue from '@/components/ProductsManagement/Inventory/StockAdjustment.vue'
 import PurchaseReportVue from '@/components/ProductsManagement/Reports/PurchaseReport.vue'
 import SalesReportVue from '@/components/ProductsManagement/Reports/SalesReport.vue'
 import StockLevelVue from '@/components/ProductsManagement/Reports/StockLevel.vue'
@@ -50,6 +55,31 @@ const routes = [
           path:'/report/stocklevel',
           name: 'stocklevel',
           component: StockLevelVue
+    },
+     {
+          path:'/inventory/newproducts',
+          name: 'newproducts',
+          component: NewProductsVue
+    },
+     {
+          path:'/inventory/productlist',
+          name: 'productlist',
+          component: ProductListVue
+    },
+     {
+          path:'/inventory/stockadjustment',
+          name: 'stockadjustment',
+          component: StockAdjustmentVue
+    },
+     {
+          path:'/customers/customerlist',
+          name: 'customerlist',
+          component: CustomerListVue
+    },
+     {
+          path:'/customers/newcustomer',
+          name: 'newcustomer',
+          component: NewCustomerVue
     },
     ],
   },

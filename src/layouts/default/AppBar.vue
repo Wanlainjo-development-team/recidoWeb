@@ -1,14 +1,18 @@
 
 <script >
-import Vue from 'vue'
-export default({
+
+export default{
   data:()=>({  
     companyNmae: "WANLAINJO COMPUTERS",
     drawerItem: [
-        
+      {title:'Iventory', path:'/inventory/productlist',icon:'mdi-StoreOutline',color:'info'},
+      {title:'Sales', path:'/sales/orderlist',icon:'mdi-shopping',color:'primary'},
+      {title:'Report', path:'/report/salesreport',icon:'mdi-shopping',color:'yellow'},
+      {title:'Customers', path:'/customers/customerlist',icon:'mdi-user',color:'green'},
     ],
   })
-})
+}
+
 </script>
 
 <template>
@@ -25,70 +29,17 @@ export default({
   >
    <v-list>
       <v-list-item> 
-        <v-btn
-        prepend-icon="mdi-shopping"
-        color="primary"
-        href="#"
+        <v-btn v-for="(route, i) in drawerItem" :key="i" :to="route.path"
+        color= route.color
         min-width="200"
         size="large"
         variant="flat"
         elevated
       >
-        SALES
+         {{ route.title }}
       </v-btn>
+      <v-divider/>
       </v-list-item>
-      <v-divider/> 
-      <v-list-item> 
-        <v-btn
-        color="success"
-        href="#"
-        min-width="200"
-        size="large"
-        variant="flat"
-      >
-        <v-icon
-          icon="mdi-StoreOutline"
-          size="large"
-          start
-        />
-        INVENTORY
-      </v-btn>
-      </v-list-item>
-      <v-divider/> 
-      <v-list-item> 
-        <v-btn
-        color="yellow"
-        href="#"
-        min-width="200"
-        size="large"
-        variant="flat"
-      >
-        <v-icon
-          icon="mdi-store"
-          size="large"
-          start
-        />
-        Inventory
-      </v-btn>
-      </v-list-item>
-      <v-divider/> 
-      <v-list-item> 
-        <v-btn
-        color="info"
-        href="#"
-        min-width="200"
-        size="large"
-        variant="flat"
-      >
-        <v-icon
-          icon="mdi-Chart-line"
-          size="large"
-          start
-        />
-        <router-link to="/reports/salesreport">Reports</router-link>
-      </v-btn>
-      </v-list-item>
-      <v-divider/> 
    </v-list>
   </v-navigation-drawer>
 </template>
