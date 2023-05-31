@@ -2,7 +2,7 @@
 <script >
 export default {
   data: () => ({
-    companyNmae: "WANLAINJO COMPUTERS",
+    companyNmae: "ReciDo",
     drawerItem: [
       {
         title: "Dashboard",
