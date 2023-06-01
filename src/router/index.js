@@ -9,7 +9,7 @@ import SalesReportVue from '@/components/ProductsManagement/Reports/SalesReport.
 import StockLevelVue from '@/components/ProductsManagement/Reports/StockLevel.vue'
 import OrderListVue from '@/components/ProductsManagement/Sales/OrderList.vue'
 import SaleQuoteVue from '@/components/ProductsManagement/Sales/SaleQuote.vue'
-import ReusableTableVue from '@/components/Reusables/ReusableTable.vue'
+import ReusableTableVue from '@/components/Reusables/ReusableTableHeader.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [

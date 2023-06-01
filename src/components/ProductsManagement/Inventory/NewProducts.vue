@@ -1,5 +1,7 @@
 <script>
+import ReusableTableHeader from '@/components/Reusables/ReusableTableHeader.vue'
 export default {
+  components: { ReusableTableHeader },
  
      
     name: "newProducts",
@@ -47,6 +49,9 @@ export default {
             </v-sheet>
 
           </v-sheet>
+        </div>
+        <div>
+            <reusable-table-header :buttonTitle="NewProduct" label="search products" :tableTitle="Products" />
         </div>
      </v-container>
 </template>
