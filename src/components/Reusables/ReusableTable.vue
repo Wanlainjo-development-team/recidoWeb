@@ -9,7 +9,7 @@ export default {
     }
   },
     data: ()=>({  
-        tableTile: "Inventory9",
+        tableTile: "Inventory93",
        
     })
 }
