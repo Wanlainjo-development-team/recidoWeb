@@ -9,6 +9,7 @@ import SalesReportVue from '@/components/ProductsManagement/Reports/SalesReport.
 import StockLevelVue from '@/components/ProductsManagement/Reports/StockLevel.vue'
 import OrderListVue from '@/components/ProductsManagement/Sales/OrderList.vue'
 import SaleQuoteVue from '@/components/ProductsManagement/Sales/SaleQuote.vue'
+import ReusableTableVue from '@/components/Reusables/ReusableTable.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -19,7 +20,7 @@ const routes = [
       {
         path: '',
         name: 'Home',
-        component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+        component: () => import( '@/views/Home.vue'),
       },
       {
         path:'/sales/orderlist',
@@ -80,6 +81,11 @@ const routes = [
           path:'/customers/newcustomer',
           name: 'newcustomer',
           component: NewCustomerVue
+    },
+     {
+          path:'/reusable/table',
+          name: 'table',
+          component: ReusableTableVue
     },
     ],
   },

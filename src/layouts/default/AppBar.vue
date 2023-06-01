@@ -34,6 +34,12 @@ export default {
         icon: "mdi-account-group",
         color: "green",
       },
+      {
+        title: "tables",
+        path: "/reusable/table",
+        icon: "mdi-account-group",
+        color: "green",
+      },
     ],
   }),
 };
