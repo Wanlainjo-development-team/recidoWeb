@@ -10,6 +10,7 @@ import StockLevelVue from '@/components/ProductsManagement/Reports/StockLevel.vu
 import OrderListVue from '@/components/ProductsManagement/Sales/OrderList.vue'
 import SaleQuoteVue from '@/components/ProductsManagement/Sales/SaleQuote.vue'
 import ReusableTableVue from '@/components/Reusables/ReusableTableHeader.vue'
+import DataTablesVue from '@/components/Reusables/DataTables.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -86,6 +87,11 @@ const routes = [
           path:'/reusable/table',
           name: 'table',
           component: ReusableTableVue
+    },
+     {
+          path:'/dataTables',
+          name: 'DataTables',
+          component: DataTablesVue
     },
     ],
   },

@@ -3,6 +3,13 @@
 export default {
   data: () => ({
     companyNmae: "ReciDo",
+    props: {
+    toggle: {
+        type: Boolean,
+        required: false,
+        default: true
+    }
+  },
     drawerItem: [
       {
         title: "Dashboard",

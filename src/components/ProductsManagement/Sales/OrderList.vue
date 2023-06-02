@@ -10,7 +10,6 @@ export default {
       loading: false,
     }),
 
-    
   }
 
 </script>
