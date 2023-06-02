@@ -12,7 +12,6 @@ export default {
 };
 </script>
 <template>
-  
     <div>
       <v-sheet class="d-flex flex-wrap" elevation="2">
         <v-sheet class="flex-1-0 ma-2 pa-2">

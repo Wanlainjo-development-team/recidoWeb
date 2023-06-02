@@ -1,5 +1,7 @@
 <script>
+import ReusableTableHeader from '@/components/Reusables/ReusableTableHeader.vue'
 export default {
+  components: { ReusableTableHeader },
  
      
     name: "CustomerList",
@@ -24,29 +26,7 @@ export default {
 <template>
      <v-container>
         <div>
-        <v-sheet class="d-flex flex-wrap " elevation="2">
-            <v-sheet class="flex-1-0 ma-2 pa-2">
-               <h1>Customers</h1>
-            </v-sheet>
-            <v-sheet class="flex-1-0 ma-2 pa-2">
-                <v-text-field
-                    :loading="loading"
-                    density="compact"
-                    variant="solo"
-                    label="Customer Name"
-                    append-inner-icon="mdi-magnify"
-                    single-line
-                    hide-details
-                    @click:append-inner="onClick"
-                ></v-text-field>  
-            </v-sheet>
-          
-             
-            <v-sheet class="ma-2 pa-2 ">
-               <v-btn class="bg-primary">New Customer</v-btn>
-            </v-sheet>
-
-          </v-sheet>
+        <reusable-table-header :tableTitle="'Customers'" :buttonTitle="'Add New'"/>
         </div>
      </v-container>
 </template>
