@@ -53,23 +53,31 @@ export default {
 </script>
 
 <template>
-  <v-app-bar>
-    <v-app-bar-title>
-      <v-icon icon="mdi-circle-slice-6" />
-      {{ companyNmae }}
-    </v-app-bar-title>
-  </v-app-bar>
 
   <v-navigation-drawer permanent location="left">
+    <div>
+      <v-app-bar>
+        <v-app-bar-title>
+          <v-icon icon="mdi-circle-slice-6" />
+          {{ companyNmae }}
+        </v-app-bar-title>
+      </v-app-bar>
+    </div>
     <v-list>
       <v-list-item v-for="(route, i) in drawerItem" :key="i" :to="route.path">
-        <div :class="`bg-${route.color}`" class="rounded-lg py-3 px-2">
+        <div  class="rounded-lg py-3 px-2">
           <v-icon :icon="route.icon"></v-icon>
           {{ route.title }}
         </div>
         <v-divider />
       </v-list-item>
     </v-list>
+    <v-list-tile @click="changeRoute('Dashboard', 1)">
+      <v-list-tile-action v-for="(route, i) in drawerItem" :key="i" :to="route.path">
+        <v-icon>dashboard</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-title ></v-list-tile-title>
+    </v-list-tile>
   </v-navigation-drawer>
 </template>
 
