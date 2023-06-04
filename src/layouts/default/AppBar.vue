@@ -53,15 +53,15 @@ export default {
 </script>
 
 <template>
-
-  <v-navigation-drawer permanent location="left">
-    <div>
-      <v-app-bar>
+<v-app-bar>
         <v-app-bar-title>
           <v-icon icon="mdi-circle-slice-6" />
           {{ companyNmae }}
         </v-app-bar-title>
       </v-app-bar>
+  <v-navigation-drawer permanent location="left">
+    <div>
+      
     </div>
     <v-list>
       <v-list-item v-for="(route, i) in drawerItem" :key="i" :to="route.path">
