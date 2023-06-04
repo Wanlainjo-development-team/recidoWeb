@@ -9,16 +9,7 @@ export default {
     tableTitle: String,
     buttonTitle: String,
   },
-  methods: {
-      onClick () {
-        this.loading = true
-
-        setTimeout(() => {
-          this.loading = false
-          this.loaded = true
-        }, 2000)
-      },
-    },
+   
 };
 </script>
 <template>
@@ -29,14 +20,15 @@ export default {
         </v-sheet>
         <v-sheet class="flex-1-0 ma-2 pa-2">
           <v-text-field
-            :loading="loading"
+        
             density="compact"
             variant="solo"
             append-inner-icon="mdi-magnify"
             single-line
             hide-details
             label="Search"
-          ></v-text-field>
+          >
+        </v-text-field>
         </v-sheet>
 
         <v-sheet class="ma-2 pa-2">
