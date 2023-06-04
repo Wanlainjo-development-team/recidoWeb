@@ -12,6 +12,7 @@ import SaleQuoteVue from '@/components/ProductsManagement/Sales/SaleQuote.vue'
 import ReusableTableVue from '@/components/Reusables/ReusableTableHeader.vue'
 import DataTablesVue from '@/components/Reusables/DataTables.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import DashboardVue from '@/components/Dashboard/Dashboard.vue'
 
 const routes = [
   {
@@ -21,7 +22,7 @@ const routes = [
       {
         path: '',
         name: 'Home',
-        component: () => import( '@/views/Home.vue'),
+        component: DashboardVue,
       },
       {
         path:'/sales/orderlist',
