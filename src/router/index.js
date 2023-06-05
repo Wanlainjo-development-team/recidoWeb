@@ -25,32 +25,37 @@ const routes = [
         component: DashboardVue,
       },
       {
-        path:'/sales/orderlist',
+        path: 'dashboard',
+        name: 'Home.DashboardVue',
+        component: DashboardVue,
+      },
+      {
+        path:'sales/orderlist',
         name: 'OrderList',
         component: OrderListVue
      },
      {
-          path:'/sales/salesreport',
+          path:'sales/salesreport',
           name: 'SalesReport',
           component: SalesReportVue
     },
      {
-          path:'/sales/salesquote',
+          path:'sales/salesquote',
           name: 'SalesQuote',
           component: SaleQuoteVue
     },
      {
-          path:'/report/purchasereport',
+          path:'report/purchasereport',
           name: 'purchasereport',
           component: PurchaseReportVue
     },
      {
-          path:'/report/salesreport',
+          path:'report/salesreport',
           name: 'salereport',
           component: SalesReportVue
     },
      {
-          path:'/report/salesreport',
+          path:'report/salesreport',
           name: 'salereport',
           component: SalesReportVue
     },
