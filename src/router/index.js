@@ -7,7 +7,7 @@ import StockAdjustmentVue from '@/components/ProductsManagement/Inventory/StockA
 import PurchaseReportVue from '@/components/ProductsManagement/Reports/PurchaseReport.vue'
 import SalesReportVue from '@/components/ProductsManagement/Reports/SalesReport.vue'
 import StockLevelVue from '@/components/ProductsManagement/Reports/StockLevel.vue'
-import OrderListVue from '@/components/ProductsManagement/Sales/OrderList.vue'
+import InvoiceListVue from '@/components/ProductsManagement/Sales/InvoiceList.vue'
 import SaleQuoteVue from '@/components/ProductsManagement/Sales/SaleQuote.vue'
 import ReusableTableVue from '@/components/Reusables/ReusableTableHeader.vue'
 import DataTablesVue from '@/components/Reusables/DataTables.vue'
@@ -30,9 +30,9 @@ const routes = [
         component: DashboardVue,
       },
       {
-        path:'sales/orderlist',
-        name: 'OrderList',
-        component: OrderListVue
+        path:'sales/InvoiceList',
+        name: 'InvoiceList',
+        component: InvoiceListVue
      },
      {
           path:'sales/salesreport',
