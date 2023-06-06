@@ -1,32 +1,52 @@
 <template>
+<v-container id="data-tables" fluid tag="section">
   <v-table>
     <thead>
-      <tr>
+      <tr color="primary">
         <th class="text-left">
           Name
         </th>
         <th class="text-left">
-          Calories
+          item
+        </th>
+        <th class="text-left">
+          date
+        </th>
+        <th class="text-left">
+          Action
         </th>
       </tr>
     </thead>
     <tbody>
       <tr
-        v-for="item in desserts"
+        v-for="item in tableHeaders"
         :key="item.name"
       >
         <td>{{ item.name }}</td>
-        <td>{{ item.calories }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.name }}</td>
+        <td>
+          <tr class="pa-2">
+            <td>
+               <v-btn class="pa-2" color="error">Cancel</v-btn>
+            </td>
+            <td class="pa-2">
+               <v-btn color="success" >Edit</v-btn>
+            </td>
+            
+          </tr>
+        </td>
       </tr>
     </tbody>
   </v-table>
+</v-container>
 </template>
 
 <script>
   export default {
     data () {
       return {
-        desserts: [
+        tableHeaders: [
           {
             name: 'Frozen Yogurt',
             calories: 159,
@@ -35,40 +55,12 @@
             name: 'Ice cream sandwich',
             calories: 237,
           },
-          {
-            name: 'Eclair',
-            calories: 262,
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-          },
+           
         ],
       }
+    },
+    props () {
+      
     },
   }
 </script>
