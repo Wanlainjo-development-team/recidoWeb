@@ -1,77 +1,75 @@
 
 <script>
 import { db } from "@/plugins/firebase";
-import {uid} from "uid";
+import { doc, getDoc } from "firebase/firestore";
+import { uid } from "uid";
 export default {
-name: "invoiceModal",
-data() {
-  return {  
-    invoiceId: String,
-  date: String,
-  invoiceContact: Object,
-  city: String,
-  state: String,
-  zip: String,
-  country: String,
-  shippingCity: String,
-  shippingState: String,
-  shippingZip: String,
-  shippingCountry: String,
-  items,
-    items:[],    
-    note: null,
-    vat: null,
-    invoiceTotalPrice: null,
-    invoiceItemList: []
-  }
-},
- addNewinvoiceItem(){  
-  this.invoiceItemList.push({  
-    id:uid(),
-    itemName:"",
-    itemQuantity:"",
-    itemPrice:"",
-    toTalprice:"",
-  })
- },
- deleteInvoiceItem(id){
-    this.invoiceItemList = this.invoiceItemList.filter((item)=> item.id !== id);
+  name: "invoiceModal",
+  data() {
+    return {
+      invoiceId: String,
+      date: String,
+      invoiceContact: Object,
+      city: String,
+      state: String,
+      zip: String,
+      country: String,
+      shippingCity: String,
+      shippingState: String,
+      shippingZip: String,
+      shippingCountry: String,
+      items: [],
+      note: String,
+      vat: String,
+      invoiceTotalPrice: String,
+      invoiceItemList: [],
+    };
   },
-  publishInvoiceItem(){  
-    this.invoicePending = true;
+  addNewinvoiceItem() {
+    this.invoiceItemList.push({
+      id: uid(),
+      itemName: "",
+      itemQuantity: "",
+      itemPrice: "",
+      toTalprice: "",
+    });
   },
-  saveDraftInvoiceItem(){
-    this.invoiceDate = true
+  deleteInvoiceItem(id) {
+    this.invoiceItemList = this.items.filter((item) => item.id !== id);
   },
-  calculateInvoiceTotal(){
-      this.invoiceTotalPrice = 0;
-      this.invoiceItemList.forEach((item)=>{
-        this.invoiceTotalPrice += item.total
-      });
+  publishInvoiceItem() {
+    this.items = true;
+  },
+  saveDraftInvoiceItem() {
+    this.date = true;
+  },
+  calculateInvoiceTotal() {
+    this.invoiceTotalPrice = 0;
+    this.invoiceItemList.forEach((item) => {
+      this.invoiceTotalPrice += item.total;
+    });
   },
   //uploading a new invoice
-  async uploadInvoiceItem(){
-     if (this.invoiceItemList.length <= 0){ 
-      alert("Please make sure you field the required fields")
+  async uploadInvoiceItem() {
+    if (this.invoiceItemList.length <= 0) {
+      alert("Please make sure you field the required fields");
       return;
-      }
-      this.calculateInvoiceTotal();
+    }
+    this.calculateInvoiceTotal();
 
-      const database = db.collection("invoice").doc();
+    // const database = db.collection("invoice").doc();
+    const database = (await getDoc(doc(doc, "invoice"))).data();
 
-      await database.set({  
-         
-      })
+    await database.set({});
   },
-  submitForm(){  
+  submitForm() {
     this.uploadInvoiceItem = true;
-  }
-
-}
+  },
+};
 </script>
 <template>
-    <v-container id="data-tables" fluid tag="section">
-        <!-- <v-table>
+  <v-container id="data-tables" fluid tag="section">
+    <!-- <v-table>
           <thead>
             <tr>
               <th class="text-left">
@@ -99,143 +97,259 @@ data() {
             </tr>
           </tbody>
         </v-table> -->
-        
-  <div @click="checkClick" ref="invoiceWrap" class="invoice-wrap flex flex-column">
-    <form @submit.prevent="submitForm" class="invoice-content">
-      <Loading v-show="loading" />
-      <h1 v-if="!editInvoice">New Invoice</h1>
-      <h1 v-else>Edit Invoice</h1>
 
-      <!-- Bill From -->
-      <div class="bill-from flex flex-column">
-        <h4>Bill From</h4>
-        <div class="input flex flex-column">
-          <label for="billerStreetAddress">Street Address</label>
-          <input required type="text" id="billerStreetAddress" v-model="billerStreetAddress" />
-        </div>
-        <div class="location-details flex">
-          <div class="input flex flex-column">
-            <label for="billerCity">City</label>
-            <input required type="text" id="billerCity" v-model="billerCity" />
-          </div>
-          <div class="input flex flex-column">
-            <label for="billerZipCode">Zip Code</label>
-            <input required type="text" id="billerZipCode" v-model="billerZipCode" />
-          </div>
-          <div class="input flex flex-column">
-            <label for="billerCountry">Country</label>
-            <input required type="text" id="billerCountry" v-model="billerCountry" />
-          </div>
-        </div>
-        <div class="location-details flex">
-          <div class="input flex flex-column">
-            <label for="billerCity">City</label>
-            <input required type="text" id="billerCity" v-model="billerCity" />
-          </div>
-          <div class="input flex flex-column">
-            <label for="billerZipCode">Zip Code</label>
-            <input required type="text" id="billerZipCode" v-model="billerZipCode" />
-          </div>
-          <div class="input flex flex-column">
-            <label for="billerCountry">Country</label>
-            <input required type="text" id="billerCountry" v-model="billerCountry" />
-          </div>
-        </div>
-      </div>
+    <div
+      @click="checkClick"
+      ref="invoiceWrap"
+      class="invoice-wrap flex flex-column"
+    >
+      <form @submit.prevent="submitForm" class="invoice-content">
+        <Loading v-show="loading" />
+        <h1 v-if="!editInvoice">New Invoice</h1>
+        <h1 v-else>Edit Invoice</h1>
 
-      <!-- Bill To -->
-      <div class="bill-to flex flex-column">
-        <h4>Bill To</h4>
-        <div class="input flex flex-column">
-          <label for="clientName">Client's Name</label>
-          <input required type="text" id="clientName" v-model="clientName" />
-        </div>
-        <div class="input flex flex-column">
-          <label for="clientEmail">Client's Email</label>
-          <input required type="text" id="clientEmail" v-model="clientEmail" />
-        </div>
-        <div class="input flex flex-column">
-          <label for="clientStreetAddress">Street Address</label>
-          <input required type="text" id="clientStreetAddress" v-model="clientStreetAddress" />
-        </div>
-        <div class="location-details flex">
+        <!-- Bill From -->
+        <div class="bill-from flex flex-column">
+          <h4>Bill From</h4>
           <div class="input flex flex-column">
-            <label for="clientCity">City</label>
-            <input required type="text" id="clientCity" v-model="clientCity" />
+            <label for="billerStreetAddress">Street Address</label>
+            <input
+              required
+              type="text"
+              id="billerStreetAddress"
+              v-model="billerStreetAddress"
+            />
           </div>
-          <div class="input flex flex-column">
-            <label for="clientZipCode">Zip Code</label>
-            <input required type="text" id="clientZipCode" v-model="clientZipCode" />
+          <div class="location-details flex">
+            <div class="input flex flex-column">
+              <label for="billerCity">City</label>
+              <input
+                required
+                type="text"
+                id="billerCity"
+                v-model="billerCity"
+              />
+            </div>
+            <div class="input flex flex-column">
+              <label for="billerZipCode">Zip Code</label>
+              <input
+                required
+                type="text"
+                id="billerZipCode"
+                v-model="billerZipCode"
+              />
+            </div>
+            <div class="input flex flex-column">
+              <label for="billerCountry">Country</label>
+              <input
+                required
+                type="text"
+                id="billerCountry"
+                v-model="billerCountry"
+              />
+            </div>
           </div>
-          <div class="input flex flex-column">
-            <label for="clientCountry">Country</label>
-            <input required type="text" id="clientCountry" v-model="clientCountry" />
+          <div class="location-details flex">
+            <div class="input flex flex-column">
+              <label for="billerCity">City</label>
+              <input
+                required
+                type="text"
+                id="billerCity"
+                v-model="billerCity"
+              />
+            </div>
+            <div class="input flex flex-column">
+              <label for="billerZipCode">Zip Code</label>
+              <input
+                required
+                type="text"
+                id="billerZipCode"
+                v-model="billerZipCode"
+              />
+            </div>
+            <div class="input flex flex-column">
+              <label for="billerCountry">Country</label>
+              <input
+                required
+                type="text"
+                id="billerCountry"
+                v-model="billerCountry"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Invoice Work Details -->
-      <div class="invoice-work flex flex-column">
-        <div class="payment flex">
+        <!-- Bill To -->
+        <div class="bill-to flex flex-column">
+          <h4>Bill To</h4>
           <div class="input flex flex-column">
-            <label for="invoiceDate">Invoice Date</label>
-            <input disabled type="text" id="invoiceDate" v-model="invoiceDate" />
+            <label for="clientName">Client's Name</label>
+            <input required type="text" id="clientName" v-model="clientName" />
           </div>
           <div class="input flex flex-column">
-            <label for="paymentDueDate">Payment Due</label>
-            <input disabled type="text" id="paymentDueDate" v-model="paymentDueDate" />
+            <label for="clientEmail">Client's Email</label>
+            <input
+              required
+              type="text"
+              id="clientEmail"
+              v-model="clientEmail"
+            />
+          </div>
+          <div class="input flex flex-column">
+            <label for="clientStreetAddress">Street Address</label>
+            <input
+              required
+              type="text"
+              id="clientStreetAddress"
+              v-model="clientStreetAddress"
+            />
+          </div>
+          <div class="location-details flex">
+            <div class="input flex flex-column">
+              <label for="clientCity">City</label>
+              <input
+                required
+                type="text"
+                id="clientCity"
+                v-model="clientCity"
+              />
+            </div>
+            <div class="input flex flex-column">
+              <label for="clientZipCode">Zip Code</label>
+              <input
+                required
+                type="text"
+                id="clientZipCode"
+                v-model="clientZipCode"
+              />
+            </div>
+            <div class="input flex flex-column">
+              <label for="clientCountry">Country</label>
+              <input
+                required
+                type="text"
+                id="clientCountry"
+                v-model="clientCountry"
+              />
+            </div>
           </div>
         </div>
-        <div class="input flex flex-column">
-          <label for="paymentTerms">Payment Terms</label>
-          <select required type="text" id="paymentTerms" v-model="paymentTerms">
-            <option value="30">Net 30 Days</option>
-            <option value="60">Net 60 Days</option>
-          </select>
-        </div>
-        <div class="input flex flex-column">
-          <label for="productDescription">Product Description</label>
-          <input required type="text" id="productDescription" v-model="productDescription" />
-        </div>
-        <div class="work-items">
-          <h3>Item List</h3>
-          <table class="item-list">
-            <tr class="table-heading flex">
-              <th class="item-name">Item Name</th>
-              <th class="qty">Qty</th>
-              <th class="price">Price</th>
-              <th class="total">Toal</th>
-            </tr>
-            <tr class="table-items flex" v-for="(item, index) in invoiceItemList" :key="index">
-              <td class="item-name"><input type="text" v-model="item.itemName" /></td>
-              <td class="qty"><input type="text" v-model="item.qty" /></td>
-              <td class="price"><input type="text" v-model="item.price" /></td>
-              <td class="total flex">${{ (item.total = item.qty * item.price) }}</td>
-              <img @click="deleteInvoiceItem(item.id)" src="@/assets/icon-delete.svg" alt="" />
-            </tr>
-          </table>
 
-          <div @click="addNewInvoiceItem" class="flex button">
-            <img src="@/assets/icon-plus.svg" alt="" />
-            Add New Item
+        <!-- Invoice Work Details -->
+        <div class="invoice-work flex flex-column">
+          <div class="payment flex">
+            <div class="input flex flex-column">
+              <label for="invoiceDate">Invoice Date</label>
+              <input
+                disabled
+                type="text"
+                id="invoiceDate"
+                v-model="invoiceDate"
+              />
+            </div>
+            <div class="input flex flex-column">
+              <label for="paymentDueDate">Payment Due</label>
+              <input
+                disabled
+                type="text"
+                id="paymentDueDate"
+                v-model="paymentDueDate"
+              />
+            </div>
+          </div>
+          <div class="input flex flex-column">
+            <label for="paymentTerms">Payment Terms</label>
+            <select
+              required
+              type="text"
+              id="paymentTerms"
+              v-model="paymentTerms"
+            >
+              <option value="30">Net 30 Days</option>
+              <option value="60">Net 60 Days</option>
+            </select>
+          </div>
+          <div class="input flex flex-column">
+            <label for="productDescription">Product Description</label>
+            <input
+              required
+              type="text"
+              id="productDescription"
+              v-model="productDescription"
+            />
+          </div>
+          <div class="work-items">
+            <h3>Item List</h3>
+            <table class="item-list">
+              <tr class="table-heading flex">
+                <th class="item-name">Item Name</th>
+                <th class="qty">Qty</th>
+                <th class="price">Price</th>
+                <th class="total">Toal</th>
+              </tr>
+              <tr
+                class="table-items flex"
+                v-for="(item, index) in invoiceItemList"
+                :key="index"
+              >
+                <td class="item-name">
+                  <input type="text" v-model="item.itemName" />
+                </td>
+                <td class="qty"><input type="text" v-model="item.qty" /></td>
+                <td class="price">
+                  <input type="text" v-model="item.price" />
+                </td>
+                <td class="total flex">
+                  ${{ (item.total = item.qty * item.price) }}
+                </td>
+                <img
+                  @click="deleteInvoiceItem(item.id)"
+                  src="@/assets/icon-delete.svg"
+                  alt=""
+                />
+              </tr>
+            </table>
+
+            <div @click="addNewInvoiceItem" class="flex button">
+              <img src="@/assets/icon-plus.svg" alt="" />
+              Add New Item
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Save/Exit -->
-      <div class="save flex">
-        <div class="left">
-          <button type="button" @click="closeInvoice" class="red">Cancel</button>
+        <!-- Save/Exit -->
+        <div class="save flex">
+          <div class="left">
+            <button type="button" @click="closeInvoice" class="red">
+              Cancel
+            </button>
+          </div>
+          <div class="right flex">
+            <button
+              v-if="!editInvoice"
+              type="submit"
+              @click="saveDraft"
+              class="dark-purple"
+            >
+              Save Draft
+            </button>
+            <button
+              v-if="!editInvoice"
+              type="submit"
+              @click="publishInvoice"
+              class="purple"
+            >
+              Create Invoice
+            </button>
+            <button v-if="editInvoice" type="sumbit" class="purple">
+              Update Invoice
+            </button>
+          </div>
         </div>
-        <div class="right flex">
-          <button v-if="!editInvoice" type="submit" @click="saveDraft" class="dark-purple">Save Draft</button>
-          <button v-if="!editInvoice" type="submit" @click="publishInvoice" class="purple">Create Invoice</button>
-          <button v-if="editInvoice" type="sumbit" class="purple">Update Invoice</button>
-        </div>
-      </div>
-    </form>
-  </div>
-      </v-container>
+      </form>
+    </div>
+  </v-container>
 </template>
 
 <style lang="scss" scoped>
@@ -260,7 +374,8 @@ data() {
     width: 100%;
     background-color: #141625;
     color: #fff;
-    box-shadow: 10px 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 10px 4px 6px -1px rgba(0, 0, 0, 0.2),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
     h1 {
       margin-bottom: 48px;
