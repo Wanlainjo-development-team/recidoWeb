@@ -4,6 +4,30 @@ export default {
   components: { ReusableTableHeader },
 
   name: "Productlist",
+  data(){
+    return{  
+       
+    
+    }
+  },
+  props : { 
+      // item:{  
+      //    type:String,
+      //    required:true,
+      // },
+      // Description:{  
+      //   type:String,
+      //   required:false,
+      // },
+      // quantiy:{
+      //   type:String,
+      //   required:true
+      // },
+      // unitPrice:{
+      //   type:String,
+      //   required:true
+      // },
+  },
 };
 </script>
 <template>

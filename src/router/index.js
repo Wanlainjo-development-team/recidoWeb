@@ -10,7 +10,6 @@ import StockLevelVue from '@/components/ProductsManagement/Reports/StockLevel.vu
 import InvoiceListVue from '@/components/ProductsManagement/Sales/InvoiceList.vue'
 import SaleQuoteVue from '@/components/ProductsManagement/Sales/SaleQuote.vue'
 import ReusableTableVue from '@/components/Reusables/ReusableTableHeader.vue'
-import DataTablesVue from '@/components/Reusables/DataTables.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardVue from '@/components/Dashboard/Dashboard.vue'
 
@@ -30,8 +29,8 @@ const routes = [
         component: DashboardVue,
       },
       {
-        path:'sales/InvoiceList',
-        name: 'InvoiceList',
+        path:'invoiceList',
+        name: 'sales/invoiceList',
         component: InvoiceListVue
      },
      {
@@ -94,11 +93,7 @@ const routes = [
           name: 'table',
           component: ReusableTableVue
     },
-     {
-          path:'/dataTables',
-          name: 'DataTables',
-          component: DataTablesVue
-    },
+      
     ],
   },
   

@@ -6,15 +6,22 @@ export default {
     loading: false,
   }),
   props: {
-    tableTitle: String,
-    buttonTitle: String,
+    tableTitle:{
+      type: String,
+       reqiured: true
+      },
+    buttonTitle:{
+      type: String,
+      reqiured: false,
+    },
+    
   },
    
 };
 </script>
 <template>
     <div>
-      <v-sheet class="d-flex flex-wrap" elevation="2">
+      <v-sheet class="d-flex flex-wrap">
         <v-sheet class="flex-1-0 ma-2 pa-2">
           <h1>{{ tableTitle }}</h1>
         </v-sheet>

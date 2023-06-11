@@ -24,7 +24,7 @@ export default {
       },
       {
         title: "Sales",
-        path: "/sales/orderlist",
+        path: "sales/invoiceList",
         icon: "mdi-shopping",
       },
       {
@@ -37,38 +37,14 @@ export default {
         path: "/customers/customerlist",
         icon: "mdi-account-group",
       },
-      {
-        title: "tables",
-        path: "/dataTables",
-        icon: "mdi-account-group",
-      },
+       
     ],
   }),
 };
 </script>
 
 <template>
-  <!-- <div>
-    <v-card
-    color="grey-lighten-4"
-    flat
-    rounded="0"
-  >
-    <v-toolbar density="compact">
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      <v-spacer></v-spacer>
-      <v-card-title>{{companyNmae}}</v-card-title>
-      <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-    </v-toolbar>
-  </v-card>
-  </div> -->
+  
 
   <v-app-bar elevation="5">
     <v-app-bar-nav-icon @click="drawer = !drawer" />
