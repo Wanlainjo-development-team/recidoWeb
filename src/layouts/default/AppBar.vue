@@ -20,7 +20,12 @@ export default {
       {
         title: "Iventory",
         path: "/inventory/productlist",
-        icon: "mdi-FormatListBulleted",
+        icon: "mdi-NetworkPos",
+      },
+      {
+        title: "Sales",
+        path: "sales/invoiceList",
+        icon: "mdi-shopping",
       },
       {
         title: "Sales",

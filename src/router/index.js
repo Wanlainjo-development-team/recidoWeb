@@ -29,8 +29,8 @@ const routes = [
         component: DashboardVue,
       },
       {
-        path:'invoiceList',
-        name: 'sales/invoiceList',
+        path:'sales/invoiceList',
+        name: 'invoiceList',
         component: InvoiceListVue
      },
      {
