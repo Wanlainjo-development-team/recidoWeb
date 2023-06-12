@@ -1,10 +1,10 @@
 <template>
   <v-container fluid grid-list-xl>
     <v-layout row wrap>
-     
+      <InvoiceModal />
     </v-layout>
    
-    <InvoiceModal />
+   
   </v-container>
 </template>
   

@@ -1,10 +1,10 @@
 
-<script setup>
-import { db } from "@/plugins/firebase";
+<script setup> 
 import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue";
 import { useInvoicesStore } from "@/store/invoices";
 
 const invoices = useInvoicesStore()
+const count= 1
 
 // invoiceId: String,
 // date: String,
@@ -83,26 +83,34 @@ const invoices = useInvoicesStore()
     <v-table>
       <thead>
         <tr>
-          <th class="text-left ">Invoice</th>
-          <th class="text-left">Name</th>
+          <th class="text-left ">S/N</th>
+          <th class="text-left ">Invoice #</th>
+          <th class="text-left">Customer</th>
           <th class="text-left">Date</th>
           <th class="text-left">Items Count</th>
+          <th class="text-left">status</th>
           <th class="text-left">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in invoices.invoiceList" :key="item.id">
+          <td > {{count ++}}</td>
           <td>SO-{{ item.invoiceId }}</td>
           <td>{{ item.invoiceContact?.name }}</td>
           <td>{{ new Date(item?.date).toDateString() }}</td>
-          <td>{{ item.items.length }}</td>
+          <td>{{ item.items?.name }}</td>
+          <td>{{ item.invoiceState  }}</td>
           <td>
               <v-btn class="ma-1"
               prependIcon="mdi-pencil"
               color="success"
+              variant="outlined"
               >
               Upate</v-btn>
-              <v-btn class="ma-1">View</v-btn>
+              <v-btn class="ma-1"
+              color="primary"
+              variant="outlined"
+              >View Details</v-btn>
           </td>
         </tr>
       </tbody>

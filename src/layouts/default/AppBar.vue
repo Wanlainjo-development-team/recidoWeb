@@ -8,7 +8,7 @@ export default {
       toggle: {
         type: Boolean,
         required: false,
-        default: true,
+        default: false,
       },
     },
     drawerItem: [
@@ -24,14 +24,10 @@ export default {
       },
       {
         title: "Sales",
-        path: "sales/invoiceList",
+        path: "/invoiceList",
         icon: "mdi-shopping",
       },
-      {
-        title: "Sales",
-        path: "sales/invoiceList",
-        icon: "mdi-shopping",
-      },
+       
       {
         title: "Report",
         path: "/report/salesreport",
@@ -51,11 +47,11 @@ export default {
 <template>
   
 
-  <v-app-bar elevation="5">
-    <v-app-bar-nav-icon @click="drawer = !drawer" />
+  <v-app-bar elevation="1">
+    <v-app-bar-nav-icon  />
   </v-app-bar>
 
-  <v-navigation-drawer :rail="drawer">
+  <v-navigation-drawer >
     <div></div>
     <v-list>
       <v-list-item
@@ -66,7 +62,7 @@ export default {
       >
         <div class="rounded-lg py-3 px-2 d-flex align-center">
           <v-icon :style="{marginLeft: !drawer ? 'initial' : '-10px'}" :icon="route.icon"></v-icon>
-          <span v-if="!drawer" class="ml-2 mt-1">{{ route.title }}</span>
+          <span class="ml-2 mt-1">{{ route.title }}</span>
         </div>
       </v-list-item>
     </v-list>
