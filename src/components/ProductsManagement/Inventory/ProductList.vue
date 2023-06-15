@@ -1,7 +1,8 @@
 <script>
 import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue";
+import CreateNewInvoice from '../Sales/CreateNewInvoice.vue';
 export default {
-  components: { ReusableTableHeader },
+  components: { ReusableTableHeader, CreateNewInvoice },
 
   name: "Productlist",
   data(){
@@ -35,5 +36,6 @@ export default {
     <div>
       <reusable-table-header :buttonTitle="'Add Products'" :tableTitle="'Inventory'" />
     </div>
+    <create-new-invoice/>
   </v-container>
 </template>

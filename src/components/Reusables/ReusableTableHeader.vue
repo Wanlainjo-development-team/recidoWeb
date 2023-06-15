@@ -14,8 +14,12 @@ export default {
       type: String,
       reqiured: false,
     },
+    buttonClicking:{
+
+    },
     
   },
+  
    
 };
 </script>
@@ -39,7 +43,9 @@ export default {
         </v-sheet>
 
         <v-sheet class="ma-2 pa-2">
-          <v-btn class="bg-primary">{{ buttonTitle }}</v-btn>
+          <v-btn class="bg-primary"
+          @click="buttonClicking"
+          >{{ buttonTitle }}</v-btn>
         </v-sheet>
       </v-sheet>
     </div>

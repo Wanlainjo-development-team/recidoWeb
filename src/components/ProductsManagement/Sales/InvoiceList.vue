@@ -1,9 +1,10 @@
 <script>
 import ReusableTableHeader from '@/components/Reusables/ReusableTableHeader.vue'
 import InvoiceModal from "./InvoiceModal.vue";
+import CreateNewInvoice from './CreateNewInvoice.vue';
  
 export default {
-  components: { ReusableTableHeader, InvoiceModal },
+  components: { ReusableTableHeader, InvoiceModal, CreateNewInvoice },
  
      
     name: "InvoicesList",
@@ -21,6 +22,7 @@ export default {
      <v-container id="order-list" fluid tag="section">
          <div>
            <invoice-modal/>
+           <create-new-invoice/>
          </div>
      </v-container>
 </template>

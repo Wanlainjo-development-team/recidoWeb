@@ -29,15 +29,15 @@ const count= 1
 //   this.pullInvoices();
 // },
 
-//   methods: {
-//     addNewinvoiceItem() {
-//       this.invoiceItemList.push({
-//         // id: uid(),
-//         itemName: "",
-//         itemQuantity: "",
-//         itemPrice: "",
-//         toTalprice: "",
-//       });
+  // methods: {
+  //   addNewinvoiceItem() {
+  //     this.invoiceItemList.push({
+  //       // id: uid(),
+  //       itemName: "",
+  //       itemQuantity: "",
+  //       itemPrice: "",
+  //       toTalprice: "",
+  //     });
 //     },
 //     deleteInvoiceItem(id) {
 //       this.invoiceItemList = this.items.filter((item) => item.id !== id);
@@ -75,11 +75,36 @@ const count= 1
   
 <template>
   <v-container>
-    <reusable-table-header
+    <!-- <reusable-table-header
       :tableTitle="'Invoices'"
-      :buttonTitle="'New Invoice'"
-    />
+      :buttonTitle="'New Invoice'" 
+    /> -->
+<div>
+  <div>
+    <v-sheet class="d-flex flex-wrap">
+      <v-sheet class="flex-1-0 ma-2 pa-2">
+        <h1>INVOICES</h1>
+      </v-sheet>
+      <v-sheet class="flex-1-0 ma-2 pa-2">
+        <v-text-field
+          density="compact"
+          variant="solo"
+          append-inner-icon="mdi-magnify"
+          single-line
+          hide-details
+          label="Search"
+        >
+      </v-text-field>
+      </v-sheet>
 
+      <v-sheet class="ma-2 pa-2">
+        <v-btn class="bg-primary"
+        @click="buttonClicking"
+        >New Invocie</v-btn>
+      </v-sheet>
+    </v-sheet>
+  </div>
+</div>
     <v-table>
       <thead>
         <tr>
@@ -93,25 +118,28 @@ const count= 1
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in invoices.invoiceList" :key="item.id">
-          <td > {{count ++}}</td>
-          <td>SO-{{ item.invoiceId }}</td>
-          <td>{{ item.invoiceContact?.name }}</td>
-          <td>{{ new Date(item?.date).toDateString() }}</td>
-          <td>{{ item.items?.name }}</td>
-          <td>{{ item.invoiceState  }}</td>
-          <td>
-              <v-btn class="ma-1"
-              prependIcon="mdi-pencil"
-              color="success"
-              variant="outlined"
-              >
-              Upate</v-btn>
-              <v-btn class="ma-1"
-              color="primary"
-              variant="outlined"
-              >View Details</v-btn>
-          </td>
+         
+        <tr v-for="item in invoices.invoiceList" :key="item.id"
+         :class="[ index % 2 === 0 ? 'bg-grey-lighten-2' : '']">
+            <td > {{count ++}}</td>
+            <td>SO-{{ item.invoiceId }}</td>
+            <td>{{ item.invoiceContact?.name }}</td>
+            <td>{{ new Date(item?.date).toDateString() }}</td>
+            <td>{{ item.items?.name }}</td>
+            <td>{{ item.invoiceState  }}</td>
+            <td>
+                <v-btn class="ma-1"
+                prependIcon="mdi-pencil"
+                color="success"
+                variant="outlined"
+                >
+                Upate</v-btn>
+                <v-btn class="ma-1"
+                color="primary"
+                variant="outlined"
+                >View Details</v-btn>
+            </td>
+           
         </tr>
       </tbody>
     </v-table>

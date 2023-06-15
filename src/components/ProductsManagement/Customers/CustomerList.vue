@@ -33,7 +33,7 @@ export default {
       <tbody>
         <tr v-for="customer in customers.customerList" :key="customer.id">
           <td > {{count ++}}</td>
-          <td>SO-{{ customer.name }}</td>
+          <td>{{ customer.name }}</td>
            
           <td>
               <v-btn class="ma-1"
