@@ -1,8 +1,10 @@
 <script>
+ 
 import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue";
 import { useCustomerStore } from "@/store/customers";
+import NewCustomer from './NewCustomer.vue';
 export default {
-  components: { ReusableTableHeader },
+  components: { ReusableTableHeader, NewCustomer },
 
   name: "CustomerList",
   data: () => ({
@@ -25,6 +27,9 @@ export default {
         :tableTitle="'Customers'"
         :buttonTitle="'Add New'"
       />
+      <div>
+         <new-customer/>
+      </div>
     </div>
     <v-table>
       <thead>

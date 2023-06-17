@@ -1,4 +1,6 @@
 <script>
+import NewCustomerVue from '../ProductsManagement/Customers/NewCustomer.vue';
+ 
 export default {
   name: "TableHeader",
   data: () => ({
@@ -15,7 +17,7 @@ export default {
       reqiured: false,
     },
     buttonClicking:{
-
+      
     },
     
   },
