@@ -17,7 +17,7 @@ export default {
       reqiured: false,
     },
     buttonClicking:{
-      
+       
     },
     
   },

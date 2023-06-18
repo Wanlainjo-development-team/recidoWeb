@@ -1,18 +1,14 @@
 <template>
-   
-   
-         
-            <router-view/>
-          
+  <router-view />
+
+  <v-snackbar v-model="app.snackbar" :color="app.snackbarColor" location="top right">
+    {{ app.snackbarText }}
+  </v-snackbar>
 </template>
 
-<script>
-   export default {
-  name: 'App',
-  data() {
-    return {
-      drawer: true
-    }
-  }
-}
+<script setup>
+import { ref } from "vue";
+import { useAppStore } from "./store/app";
+
+const app = ref(useAppStore());
 </script>

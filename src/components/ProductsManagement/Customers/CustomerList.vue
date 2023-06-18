@@ -37,9 +37,9 @@ export default {
           <th class="text-left">S/N</th>
           <th class="text-left">Name</th>
           <th class="text-left">Number</th>
-          <th class="text-left">Customer Rating</th>
-          <th class="text-left">Location</th>
-          <th class="text-left">Actions</th>
+          <th class="text-left">Email</th>
+          <th class="text-left">Address</th>
+           
         </tr>
       </thead>
       <tbody>
@@ -50,9 +50,9 @@ export default {
           <td>{{ count }}</td>
           <td>{{ customer.name }}</td>
           <td>{{ customer.phoneNumbers[0].digits }}</td>
+          <td>{{ customer.email}}</td>
           <td>{{ customer.location}}</td>
-          <td>{{ customer.city }}</td>
-
+          <!-- <td>{{ customer.city }}</td> -->
           <td>
             <v-btn
               class="ma-1"
