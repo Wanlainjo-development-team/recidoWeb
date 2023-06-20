@@ -34,8 +34,40 @@ export default {
 <template>
   <v-container>
     <div>
-      <reusable-table-header :buttonTitle="'Add Products'" :tableTitle="'Inventory'" />
+      <v-sheet class="d-flex flex-wrap">
+        <v-sheet class="flex-1-0 ma-2 pa-2">
+          <h1>INVOICES</h1>
+        </v-sheet>
+        <v-sheet class="flex-1-0 ma-2 pa-2">
+          <v-text-field
+            density="compact"
+            variant="solo"
+            append-inner-icon="mdi-magnify"
+            single-line
+            hide-details
+            label="Search"
+          >
+        </v-text-field>
+        </v-sheet>
+  
+        <v-sheet class="ma-2 pa-2">
+          <v-btn class="bg-primary"
+          @click="buttonClicking"
+          >New Invocie</v-btn>
+        </v-sheet>
+      </v-sheet>
     </div>
-    <create-new-invoice/>
+    <div class="d-flex flex-wrap">
+         <v-table>
+          <thead>
+            <tr>
+              <th class="text-left">S/N</th>
+              <th class="text-left">Name</th>
+              <th class="text-left">Number</th>
+              <th class="text-left">Email</th>
+            </tr>
+          </thead>
+         </v-table>
+    </div>
   </v-container>
 </template>

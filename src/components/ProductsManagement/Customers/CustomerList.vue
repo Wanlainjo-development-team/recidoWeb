@@ -22,10 +22,10 @@ export default {
 <template>
   <v-container>
     <div>
-      <reusable-table-header
+      <!-- <reusable-table-header
         :tableTitle="'Customers'"
         :buttonTitle="'Add New'"
-      />
+      /> -->
       <div>
         <new-customer />
       </div>

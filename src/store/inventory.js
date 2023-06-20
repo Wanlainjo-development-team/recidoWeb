@@ -2,7 +2,7 @@ import { db } from "@/plugins/firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 import { defineStore } from "pinia";
 
-export const useInventory = defineStore("inventory",{
+export const useInventorystore = defineStore("inventory",{
     sate:() =>({
         inventoryList: [],
     }),

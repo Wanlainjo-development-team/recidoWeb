@@ -1,10 +1,10 @@
 
 <script setup> 
 import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue";
-import { useInvoicesStore } from "@/store/invoices";
+ 
 
-const invoices = useInvoicesStore()
-const count= 1
+
+
 
 // invoiceId: String,
 // date: String,
@@ -75,10 +75,7 @@ const count= 1
   
 <template>
   <v-container>
-    <!-- <reusable-table-header
-      :tableTitle="'Invoices'"
-      :buttonTitle="'New Invoice'" 
-    /> -->
+     
 <div>
   <div>
     <v-sheet class="d-flex flex-wrap">
