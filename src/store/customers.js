@@ -33,8 +33,8 @@ export const useCustomerStore = defineStore("customers", {
         this.customerList = [];
         querySnapshot.forEach((doc) => {
           this.customerList.push({
-            id: doc.id,
             ...doc.data(),
+            id: doc.id,
           });
         });
       });
@@ -71,7 +71,8 @@ export const useCustomerStore = defineStore("customers", {
         app().snackbarColor = "green";
 
         this.loading = false;
-        this.dialog = false;g
+        this.dialog = false;
+        g;
       }
       // const newUser = collection(db, "users" , id, "customers").set({
       //     name:

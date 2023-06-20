@@ -1,8 +1,7 @@
 <script>
- 
 import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue";
 import { useCustomerStore } from "@/store/customers";
-import NewCustomer from './NewCustomer.vue';
+import NewCustomer from "./NewCustomer.vue";
 export default {
   components: { ReusableTableHeader, NewCustomer },
 
@@ -28,7 +27,7 @@ export default {
         :buttonTitle="'Add New'"
       />
       <div>
-         <new-customer/>
+        <new-customer />
       </div>
     </div>
     <v-table>
@@ -38,8 +37,6 @@ export default {
           <th class="text-left">Name</th>
           <th class="text-left">Number</th>
           <th class="text-left">Email</th>
-          <th class="text-left">Address</th>
-           
         </tr>
       </thead>
       <tbody>
@@ -49,10 +46,15 @@ export default {
         >
           <td>{{ count }}</td>
           <td>{{ customer.name }}</td>
-          <td>{{ customer.phoneNumbers[0].digits }}</td>
-          <td>{{ customer.email}}</td>
-          <td>{{ customer.location}}</td>
-          <!-- <td>{{ customer.city }}</td> -->
+           
+          <td>
+            <span v-for="(digit, i) in customer?.phoneNumbers" :key="i">{{
+              digit.digits
+            }}</span>
+          </td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.location }}</td>
+
           <td>
             <v-btn
               class="ma-1"
