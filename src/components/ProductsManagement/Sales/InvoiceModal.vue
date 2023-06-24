@@ -1,76 +1,16 @@
 
-<script setup> 
+<script > 
 import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue";
+import { useInvoicesStore } from '@/store/invoices';
+ export default{  
+  name: "incvoiceModal",
+  setup(){  
+    const invoices = useInvoicesStore
+
+    return{invoices}
+  }
+ }
  
-
-
-
-
-// invoiceId: String,
-// date: String,
-// invoiceContact: Object,
-// city: String,
-// state: String,
-// zip: String,
-// country: String,
-// shippingCity: String,
-// shippingState: String,
-// shippingZip: String,
-// shippingCountry: String,
-// items: [],
-// note: String,
-// vat: String,
-// invoiceTotalPrice: String,
-// invoiceItemList: [],
-
-// invoiceList: [],
-
-// mounted() {
-//   this.pullInvoices();
-// },
-
-  // methods: {
-  //   addNewinvoiceItem() {
-  //     this.invoiceItemList.push({
-  //       // id: uid(),
-  //       itemName: "",
-  //       itemQuantity: "",
-  //       itemPrice: "",
-  //       toTalprice: "",
-  //     });
-//     },
-//     deleteInvoiceItem(id) {
-//       this.invoiceItemList = this.items.filter((item) => item.id !== id);
-//     },
-//     publishInvoiceItem() {
-//       this.items = true;
-//     },
-//     saveDraftInvoiceItem() {
-//       this.date = true;
-//     },
-//     calculateInvoiceTotal() {
-//       this.invoiceTotalPrice = 0;
-//       this.invoiceItemList.forEach((item) => {
-//         this.invoiceTotalPrice += item.total;
-//       });
-//     },
-//     //uploading a new invoice
-//     async uploadInvoiceItem() {
-//       if (this.invoiceItemList.length <= 0) {
-//         alert("Please make sure you field the required fields");
-//         return;
-//       }
-//       this.calculateInvoiceTotal();
-//     },
-//     submitForm() {
-//       this.uploadInvoiceItem = true;
-//     },
-
-//     async pullInvoices() {
-
-//     },
-//   },
-// };
 </script>
   
 <template>
@@ -96,7 +36,7 @@ import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue"
 
       <v-sheet class="ma-2 pa-2">
         <v-btn class="bg-primary"
-        @click="buttonClicking"
+         
         >New Invocie</v-btn>
       </v-sheet>
     </v-sheet>
@@ -116,8 +56,7 @@ import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue"
       </thead>
       <tbody>
          
-        <tr v-for="item in invoices.invoiceList" :key="item.id"
-         :class="[ index % 2 === 0 ? 'bg-grey-lighten-2' : '']">
+        <tr v-for="item in invoices.invoiceList" :key="item.id">
             <td > {{count ++}}</td>
             <td>SO-{{ item.invoiceId }}</td>
             <td>{{ item.invoiceContact?.name }}</td>

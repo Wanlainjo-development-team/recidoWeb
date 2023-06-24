@@ -10,8 +10,8 @@ export const useInventorystore = defineStore("inventory",{
        async GET_INVENTORY(){
         let id = import.meta.env.VITE_UserId;
 
-        const i = collection(db, "users",id,"inventory");
-        const unsubscribe = onSnapshot(i,(querySnapshot) =>{
+        const q = collection(db, "users",id,"inventory");
+        const unsubscribe = onSnapshot (q,(querySnapshot) =>{
             this.inventoryList = [];
             querySnapshot.forEach((doc) =>{
                 this.inventoryList.push({

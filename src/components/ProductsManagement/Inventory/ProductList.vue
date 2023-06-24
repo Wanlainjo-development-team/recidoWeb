@@ -1,33 +1,16 @@
 <script>
-import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue";
-import CreateNewInvoice from '../Sales/CreateNewInvoice.vue';
+import {useInventorystore} from "@/store/inventory";
+ import CreateNewInvoice from '../Sales/CreateNewInvoice.vue';
 export default {
-  components: { ReusableTableHeader, CreateNewInvoice },
+  components: { CreateNewInvoice },
 
   name: "Productlist",
-  data(){
-    return{  
-       
-    
-    }
-  },
-  props : { 
-      // item:{  
-      //    type:String,
-      //    required:true,
-      // },
-      // Description:{  
-      //   type:String,
-      //   required:false,
-      // },
-      // quantiy:{
-      //   type:String,
-      //   required:true
-      // },
-      // unitPrice:{
-      //   type:String,
-      //   required:true
-      // },
+   
+   
+  setup() {
+    const inventory = useInventorystore
+
+    return { inventory };
   },
 };
 </script>
@@ -36,7 +19,7 @@ export default {
     <div>
       <v-sheet class="d-flex flex-wrap">
         <v-sheet class="flex-1-0 ma-2 pa-2">
-          <h1>INVOICES</h1>
+          <h1>Inventory</h1>
         </v-sheet>
         <v-sheet class="flex-1-0 ma-2 pa-2">
           <v-text-field
@@ -52,21 +35,35 @@ export default {
   
         <v-sheet class="ma-2 pa-2">
           <v-btn class="bg-primary"
-          @click="buttonClicking"
-          >New Invocie</v-btn>
+          
+          >Add</v-btn>
         </v-sheet>
       </v-sheet>
     </div>
-    <div class="d-flex flex-wrap">
+    <div>
          <v-table>
           <thead>
             <tr>
               <th class="text-left">S/N</th>
-              <th class="text-left">Name</th>
-              <th class="text-left">Number</th>
-              <th class="text-left">Email</th>
+              <th class="text-left">item</th>
+              <th class="text-left">description</th>
+              <th class="text-left">price</th>
+              <th class="text-left">Quantity</th>
+              <th class="text-left">Unit price</th>
+              <th class="text-left">inventory Value</th>
             </tr>
           </thead>
+           <tbody>
+              <tr v-for="(inventory, count) in inventory.inventoryList"
+                 :key="inventory.id">
+                  <td>{{count}}</td>
+                <td>{{inventory.name}}</td>
+                <td>{{inventory.description}}</td>
+                <td>{{inventory.quantity}}</td>
+                <td>{{inventory.price}}</td>
+                <td>{{inventory.price * inventory.quantity}}</td>
+              </tr>
+           </tbody>
          </v-table>
     </div>
   </v-container>
