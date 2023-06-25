@@ -2,13 +2,15 @@
 import ReusableTableHeader from "@/components/Reusables/ReusableTableHeader.vue";
 import { useCustomerStore } from "@/store/customers";
 import NewCustomer from "./NewCustomer.vue";
+import TestSearch from './testSearch.vue';
 export default {
-  components: { ReusableTableHeader, NewCustomer },
+  components: { ReusableTableHeader, NewCustomer, TestSearch },
 
   name: "CustomerList",
   data: () => ({
     loaded: false,
     loading: false,
+    customerName:""
   }),
 
   setup() {
@@ -16,20 +18,50 @@ export default {
 
     return { customers };
   },
+  methods: {
+    searchForCustomers(){  
+      this.customerList.push({ 
+        query: {customer: this.customerName}
+       })
+    }
+  }
 };
 </script>
 
 <template>
   <v-container>
+ <v-card> 
+     
     <div>
-      <!-- <reusable-table-header
-        :tableTitle="'Customers'"
-        :buttonTitle="'Add New'"
-      /> -->
-      <div>
-        <new-customer />
-      </div>
+     
+       <div>
+      <v-sheet class="d-flex flex-wrap">
+        <v-sheet class="flex-1-0 ma-2 pa-2">
+          <h1>Customers</h1>
+        </v-sheet>
+        <v-sheet class="flex-1-0 ma-2 pa-2">
+          <v-text-field
+            v-model="searchForCustomers"
+            density="compact"
+            variant="solo"
+            append-inner-icon="mdi-magnify"
+            single-line
+            hide-details
+            label="Search"
+          >
+          </v-text-field>
+        </v-sheet>
+
+        <v-sheet class="ma-2 pa-2">
+           <new-customer/>
+        </v-sheet>
+      </v-sheet>
     </div>
+       
+    </div>
+
+
+
     <v-table>
       <thead>
         <tr>
@@ -71,5 +103,6 @@ export default {
         </tr>
       </tbody>
     </v-table>
+  </v-card>
   </v-container>
 </template>

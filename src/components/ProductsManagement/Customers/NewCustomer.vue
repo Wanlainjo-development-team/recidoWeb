@@ -8,7 +8,7 @@ const customer = ref(useCustomerStore());
 <template>
   <v-dialog v-model="customer.dialog" persistent width="800">
     <template v-slot:activator="{ props }">
-      <v-btn color="primary" v-bind="props"> Add </v-btn>
+      <v-btn color="primary" v-bind="props"> Add Customer </v-btn>
     </template>
     <v-card rounded="lg">
       <v-toolbar density="compact" color="transparent">
@@ -32,6 +32,7 @@ const customer = ref(useCustomerStore());
           </v-col>
           <v-col cols="12" sm="6" md="6">
             <v-text-field
+               
               label="Address*"
               required
               type="address"

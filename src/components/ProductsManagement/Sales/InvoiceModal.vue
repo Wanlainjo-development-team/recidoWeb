@@ -6,7 +6,6 @@ import { useInvoicesStore } from '@/store/invoices';
   name: "incvoiceModal",
   setup(){  
     const invoices = useInvoicesStore
-
     return{invoices}
   }
  }
@@ -39,6 +38,11 @@ import { useInvoicesStore } from '@/store/invoices';
          
         >New Invocie</v-btn>
       </v-sheet>
+      <v-sheet class="ma-2 pa-2">
+        <v-btn class="bg-primary"
+         
+        >New Invocie</v-btn>
+      </v-sheet>
     </v-sheet>
   </div>
 </div>
@@ -57,7 +61,7 @@ import { useInvoicesStore } from '@/store/invoices';
       <tbody>
          
         <tr v-for="item in invoices.invoiceList" :key="item.id">
-            <td > {{count ++}}</td>
+            <td > {{count}}</td>
             <td>SO-{{ item.invoiceId }}</td>
             <td>{{ item.invoiceContact?.name }}</td>
             <td>{{ new Date(item?.date).toDateString() }}</td>

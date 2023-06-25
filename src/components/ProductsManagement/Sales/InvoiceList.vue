@@ -22,7 +22,6 @@ export default {
      <v-container id="order-list" fluid tag="section">
          <div>
            <invoice-modal/>
-           <create-new-invoice/>
          </div>
      </v-container>
 </template>
