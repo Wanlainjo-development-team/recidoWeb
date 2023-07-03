@@ -2,14 +2,22 @@
 <script >
 export default {
   data: () => ({
-    companyNmae: "ReciDo",
+    businessName: "ReciDo",
     drawer: true,
+    Logo: "/src/assets/logo.png",
+     
     props: {
       toggle: {
         type: Boolean,
         required: false,
-        default: false,
+        default: true,
       },
+     
+  watch: {
+      group () {
+        this.drawer = false
+      },
+    },
     },
     drawerItem: [
       {
@@ -43,16 +51,30 @@ export default {
   }),
 };
 </script>
-
+<style>
+  .v-btn:hover:before{
+    color: transparent !important;
+  }
+</style>
 <template>
-  
-
   <v-app-bar elevation="1">
-    <v-app-bar-nav-icon  />
+    <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+    <v-toolbar-title >{{businessName}}</v-toolbar-title>
+     
+      <v-img src="/src/assets/logo.png" class="flex start"/>
+   
+    
+    <v-spacer/>
+    <v-btn variant="text" icon="mdi-magnify"></v-btn>
+     <v-btn variant="text" icon="mdi-filter"></v-btn>
+    <v-btn variant="text" icon="mdi-dots-vertical"></v-btn>
   </v-app-bar>
 
-  <v-navigation-drawer >
-    <div></div>
+  <v-navigation-drawer 
+  v-model="drawer"
+  location="left"
+  >
+     
     <v-list>
       <v-list-item
         v-for="(route, i) in drawerItem"
