@@ -35,7 +35,6 @@ export default {
         </v-sheet>
         <v-sheet class="flex-1-0 ma-2 pa-2">
           <v-text-field
-           v-model="searchForJobs"
             density="compact"
             variant="solo"
             append-inner-icon="mdi-magnify"

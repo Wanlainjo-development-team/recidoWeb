@@ -74,9 +74,7 @@ export const useCustomerStore = defineStore("customers", {
         this.dialog = false;
         g;
       }
-      // const newUser = collection(db, "users" , id, "customers").set({
-      //     name:
-      // })
+     
     },
   },
 });

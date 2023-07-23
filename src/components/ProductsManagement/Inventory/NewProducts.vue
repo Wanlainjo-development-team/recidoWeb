@@ -1,57 +1,36 @@
 <script>
+
 import ReusableTableHeader from '@/components/Reusables/ReusableTableHeader.vue'
-export default {
-  components: { ReusableTableHeader },
- 
-     
-    name: "newProducts",
-    data: () => ({
-      loaded: false,
-      loading: false,
-    }),
-
-    methods: {
-      onClick () {
-        this.loading = true
-
-        setTimeout(() => {
-          this.loading = false
-          this.loaded = true
-        }, 2000)
-      },
-    },
-  }
+import { ref } from 'vue'
+import { useInventorystore } from '@/store/inventory'
+ const product = ref(useInventorystore())
 
 </script>
 <template>
-     <v-container>
-        <div>
-        <v-sheet class="d-flex flex-wrap " elevation="2">
-            <v-sheet class="flex-1-0 ma-2 pa-2">
-               <h1>Invoices</h1>
-            </v-sheet>
-            <v-sheet class="flex-1-0 ma-2 pa-2">
-                <v-text-field
-                    :loading="loading"
-                    density="compact"
-                    variant="solo"
-                    label="Search Invoice"
-                    append-inner-icon="mdi-magnify"
-                    single-line
-                    hide-details
-                    @click:append-inner="onClick"
-                ></v-text-field>  
-            </v-sheet>
-          
-             
-            <v-sheet class="ma-2 pa-2 ">
-               <v-btn class="bg-primary">New Invoice</v-btn>
-            </v-sheet>
-
-          </v-sheet>
-        </div>
-        <div>
-            <reusable-table-header :buttonTitle="NewProduct" label="search products" :tableTitle="Products" />
-        </div>
-     </v-container>
+<v-dialog v-model="product.dialog" persistent width="800">
+  <template  v-slot:activator="{ props }">
+    <v-btn color="primary" v-bind="props">Add Producs</v-btn>
+  </template>
+  <v-card>
+    <v-toolbar>
+       <v-toolbar-title>NEW PRODUCTS</v-toolbar-title>
+    <v-btn @click="product.dialog = false">
+      <v-icon>mdi-close</v-icon>
+    </v-btn>
+    </v-toolbar>
+  <v-card-text>
+  </v-card-text>
+  <v-row>
+    <v-col cols="12">
+      <v-text-field
+        label="Name*"
+        v-model="customer.customerName"
+        variant="underlined"
+        color="blue"
+        required
+      />
+      </v-col>
+  </v-row>
+  </v-card>
+</v-dialog>
 </template>

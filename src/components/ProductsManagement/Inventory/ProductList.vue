@@ -35,7 +35,7 @@ export default {
         </v-sheet>
 
         <v-sheet class="ma-2 pa-2">
-          <v-btn class="bg-primary">Add</v-btn>
+          <v-btn>products</v-btn>
         </v-sheet>
       </v-sheet>
     </div>

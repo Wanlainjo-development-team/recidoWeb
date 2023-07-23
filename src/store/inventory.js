@@ -1,10 +1,25 @@
 import { db } from "@/plugins/firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { addDoc,
+    collection,
+    getDocs,
+    onSnapshot,
+    query,
+    where,} from "firebase/firestore";
 import { defineStore } from "pinia";
+ import { useAppStore } from "./app";
+ const app = useAppStore;
 
 export const useInventorystore = defineStore("inventory",{
     sate:() =>({
         inventoryList: [],
+        dialog : false,
+        price:"",
+        description:"",
+        name:"",
+        quantity:"",
+        description:"",
+        loading: false
+
     }),
     actions:{
        async GET_INVENTORY(){
